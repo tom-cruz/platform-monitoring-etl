@@ -1,4 +1,4 @@
-from common.base import session
+from base import session
 from common.tables import StgLoginHistory, PrdLoginHistory, StgUser, PrdUser
 
 from sqlalchemy import cast, DateTime, Boolean

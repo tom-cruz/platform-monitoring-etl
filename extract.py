@@ -19,9 +19,6 @@ loginHistory_query = "SELECT Id, UserId, LoginTime, LoginType, SourceIp, LoginUr
                         Application, ClientVersion, ApiType, ApiVersion, CountryIso, AuthMethodReference FROM LoginHistory \
                         WHERE LoginTime >= " + sixMonthsAgo_date.strftime(date_format)
 
-auditTrail_query = "SELECT Id, Action, Section, CreatedDate, CreatedById, Display, DelegateUser, ResponsibleNamespacePrefix, \
-                    CreatedByContext, CreatedByIssuer FROM SetupAuditTrail"
-
 # Settings
 base_path = os.path.abspath(__file__ + "/../../")
 
@@ -46,8 +43,8 @@ def api_get_data(objectName, query):
     
     # Instantiate login session with ISC
     sf = Salesforce(username='tom.cruz@ibm-isc.com.int',
-                    password='#IBMDataScience2025',
-                    security_token='C9pj2VeYz95bvDXlN283eiqX',
+                    password='',
+                    security_token='',
                     domain='test')
 
     # Query data
@@ -67,8 +64,5 @@ def main():
     
     print("[Extract] Downloading Users")
     api_get_data("user",user_query)
-    
-    print("[Extract] Downloading Audit Trail")
-    api_get_data("auditTrail",auditTrail_query)
     
     print(f"[Extract] End")
